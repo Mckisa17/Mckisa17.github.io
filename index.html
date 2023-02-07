@@ -10,3 +10,24 @@
         </form>
     </body>
 </html>
+
+// Make a POST request to the /upload endpoint
+async function uploadFile() {
+  const file = document.querySelector('input[type="file"]').files[0];
+  const formData = new FormData();
+  formData.append('file', file);
+
+  const response = await fetch('http://localhost:5000/upload', {
+    method: 'POST',
+    body: formData
+  });
+
+  const result = await response.json();
+
+  // Handle the response from the Flask application
+  if (result.result === 'success') {
+    console.log('File uploaded successfully!');
+  } else {
+    console.error('File upload failed.');
+  }
+}
