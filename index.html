@@ -1,1 +1,12 @@
-
+<html>
+    <head>
+        <title>Upload a CSV File</title>
+    </head>
+    <body>
+        <h1>Upload a CSV File</h1>
+        <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <input type="submit" value="Upload">
+        </form>
+    </body>
+</html>
