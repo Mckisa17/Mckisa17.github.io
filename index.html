@@ -1,33 +1,21 @@
-<html>
-    <head>
-        <title>Upload a CSV File</title>
-    </head>
-    <body>
-        <h1>Upload a CSV File</h1>
-        <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
-            <input type="file" name="file">
-            <input type="submit" value="Upload">
-        </form>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Character encoding: lets the page display any text correctly -->
+  <meta charset="UTF-8">
+  <!-- Makes the page scale properly on phones instead of showing a zoomed-out desktop view -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Text shown in the browser tab and in search results -->
+  <title>Sam McKinven</title>
+  <!-- Short summary that search engines and link previews may show -->
+  <meta name="description" content="Portfolio of Sam McKinven: healthcare strategy and AI agents for intelligence delivery.">
+  <!-- Connects this page to the shared stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+    <h1>Hello, I'm Sam McKinven.</h1>
+    <p>This site is under construction.</p>
+  </main>
+</body>
 </html>
-
-// Make a POST request to the /upload endpoint
-async function uploadFile() {
-  const file = document.querySelector('input[type="file"]').files[0];
-  const formData = new FormData();
-  formData.append('file', file);
-
-  const response = await fetch('http://localhost:5000/upload', {
-    method: 'POST',
-    body: formData
-  });
-
-  const result = await response.json();
-
-  // Handle the response from the Flask application
-  if (result.result === 'success') {
-    console.log('File uploaded successfully!');
-  } else {
-    console.error('File upload failed.');
-  }
-}
