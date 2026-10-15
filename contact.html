@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact · Sam McKinven</title>
+  <meta name="description" content="How to get in touch with Sam McKinven.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <!-- ===== Header (same on every page; only aria-current moves) ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="site-name" href="index.html">Sam McKinven</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-header">
+      <p class="eyebrow eyebrow--accent">contact</p>
+      <h1>Let's talk</h1>
+      <p class="lead">[WHAT TO REACH OUT ABOUT, e.g. roles, collaborations, or projects you'd like to hear about.]</p>
+    </section>
+
+    <section class="section" aria-label="Ways to reach me">
+      <!-- To add another way to reach you, copy one <li> and edit it.
+           target="_blank" opens the link in a new tab;
+           rel="noopener" is a standard safety setting that goes with it. -->
+      <ul class="contact-links">
+        <li>
+          <a href="[YOUR LINKEDIN URL]" target="_blank" rel="noopener">
+            <span class="contact-links__label">LinkedIn ↗</span>
+            <span class="contact-links__value">[YOUR LINKEDIN HANDLE]</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/Mckisa17" target="_blank" rel="noopener">
+            <span class="contact-links__label">GitHub ↗</span>
+            <span class="contact-links__value">Mckisa17</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© <span id="year">2026</span> Sam McKinven</div>
+  </footer>
+</body>
+</html>

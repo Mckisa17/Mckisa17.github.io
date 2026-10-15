@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About · Sam McKinven</title>
+  <meta name="description" content="Career path of Sam McKinven: from healthcare strategy to building AI agents for intelligence delivery.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <!-- ===== Header (same on every page; only aria-current moves) ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="site-name" href="index.html">Sam McKinven</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="about.html" aria-current="page">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-header">
+      <p class="eyebrow eyebrow--accent">about</p>
+      <h1>From healthcare strategy to building agents</h1>
+      <p class="lead">[ONE-LINE SUMMARY OF YOUR CAREER STORY.]</p>
+    </section>
+
+    <!-- ===== Short story: 2–3 short paragraphs ===== -->
+    <section class="section prose" aria-label="My story">
+      <p>[PARAGRAPH 1: what you did in healthcare strategy and the kinds of problems you worked on.]</p>
+      <p>[PARAGRAPH 2: what pulled you toward building AI agents for intelligence delivery.]</p>
+      <p>[PARAGRAPH 3 (optional): what you're focused on now and what you're looking for.]</p>
+    </section>
+
+    <!-- ===== Career timeline: newest first =====
+         Keep each entry to 1–3 results, not a list of duties.
+         To add an entry: copy from START ENTRY to END ENTRY and edit it.
+         Only the current role keeps "timeline__item--current" (the gold dot). -->
+    <section class="section" aria-labelledby="timeline-heading">
+      <h2 class="section-title" id="timeline-heading">Career highlights</h2>
+      <p class="muted">The impact, not the job descriptions.</p>
+
+      <ol class="timeline">
+
+        <!-- ===== START ENTRY ===== -->
+        <li class="timeline__item timeline__item--current">
+          <span class="timeline__when">[YEAR] – now</span>
+          <h3 class="timeline__role">[ROLE, e.g. building agents for intelligence delivery]</h3>
+          <p class="timeline__org">[ORGANIZATION or independent]</p>
+          <ul class="timeline__impact">
+            <li>[IMPACT: what changed because of your work, with a number if you have one]</li>
+            <li>[IMPACT 2 (optional)]</li>
+          </ul>
+        </li>
+        <!-- ===== END ENTRY ===== -->
+
+        <!-- ===== START ENTRY ===== -->
+        <li class="timeline__item">
+          <span class="timeline__when">[YEAR] – [YEAR]</span>
+          <h3 class="timeline__role">[ROLE in healthcare strategy]</h3>
+          <p class="timeline__org">[ORGANIZATION]</p>
+          <ul class="timeline__impact">
+            <li>[IMPACT]</li>
+            <li>[IMPACT 2 (optional)]</li>
+          </ul>
+        </li>
+        <!-- ===== END ENTRY ===== -->
+
+        <!-- ===== START ENTRY ===== -->
+        <li class="timeline__item">
+          <span class="timeline__when">[YEAR] – [YEAR]</span>
+          <h3 class="timeline__role">[EARLIER ROLE]</h3>
+          <p class="timeline__org">[ORGANIZATION]</p>
+          <ul class="timeline__impact">
+            <li>[IMPACT]</li>
+          </ul>
+        </li>
+        <!-- ===== END ENTRY ===== -->
+
+      </ol>
+    </section>
+
+    <section class="section">
+      <div class="button-row">
+        <a class="button button--primary" href="projects.html">See my projects</a>
+        <a class="button button--ghost" href="contact.html">Get in touch</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© <span id="year">2026</span> Sam McKinven</div>
+  </footer>
+</body>
+</html>

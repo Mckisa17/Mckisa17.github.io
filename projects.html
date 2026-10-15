@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects · Sam McKinven</title>
+  <meta name="description" content="Coding projects by Sam McKinven.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <!-- ===== Header (same on every page; only aria-current moves) ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="site-name" href="index.html">Sam McKinven</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html" aria-current="page">Projects</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-header">
+      <p class="eyebrow eyebrow--accent">projects</p>
+      <h1>Things I've built</h1>
+      <p class="lead">[ONE LINE ABOUT YOUR PROJECTS, e.g. what kinds of problems you like to work on.]</p>
+    </section>
+
+    <section class="section" aria-label="Project list">
+      <!-- Each <li> below is one project card.
+           To add a project: copy everything from START CARD to END CARD,
+           paste it directly below the last card, and edit the text. -->
+      <ul class="card-list">
+
+        <!-- ===== START CARD ===== -->
+        <li>
+          <article class="card">
+            <div>
+              <h2 class="card__title">Book Tracker</h2>
+              <p class="card__meta">Built with Claude Code</p>
+              <p class="card__summary">[HOW IT WORKS IN 2–3 LINES: what a user does and what the app does behind the scenes.]</p>
+              <a class="card__link" href="[REPO URL]">View the repo →</a>
+            </div>
+            <dl class="card__details">
+              <div>
+                <dt>Problem</dt>
+                <dd>[THE PROBLEM IT SOLVES]</dd>
+              </div>
+              <div>
+                <dt>What I built</dt>
+                <dd>[WHAT YOU BUILT]</dd>
+              </div>
+            </dl>
+          </article>
+        </li>
+        <!-- ===== END CARD ===== -->
+
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© <span id="year">2026</span> Sam McKinven</div>
+  </footer>
+</body>
+</html>
