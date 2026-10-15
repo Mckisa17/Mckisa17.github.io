@@ -1,16 +1,428 @@
-/* Temporary styles for the hello-world version.
-   This file gets replaced with the full design system in the next step. */
+/* =========================================================
+   Sam McKinven: site stylesheet
+   One file styles every page. Sections:
+   1. Design tokens (colors, fonts, spacing)
+   2. Base elements
+   3. Animated background
+   4. Header and navigation
+   5. Page sections (hero, cards, contact)
+   6. Footer
+   7. Larger screens
+   ========================================================= */
+
+/* ---------- 1. Design tokens ----------
+   Change a value here and it updates everywhere it is used. */
+:root {
+  --bg: #0B0F17;            /* page background */
+  --text: #E9EDF3;          /* main text */
+  --text-muted: #B4BDCB;    /* secondary text */
+  --text-faint: #8F9AAB;    /* labels, footer */
+  --accent: #F2C46D;        /* links and highlights */
+  --accent-hover: #FFE0A3;
+  --surface: rgba(255, 255, 255, 0.045); /* see-through card fill */
+  --line: rgba(255, 255, 255, 0.09);     /* subtle borders */
+
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+  --max-width: 62.5rem;     /* 1000px: widest the content gets */
+  --gutter: 1rem;           /* side padding on phones (16px) */
+  --radius: 1.25rem;        /* card corners */
+}
+
+/* ---------- 2. Base elements ---------- */
+
+/* Makes width/padding maths predictable on every element */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+}
 
 body {
   margin: 0;
-  padding: 2rem 1rem;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  line-height: 1.6;
-  color: #1a2433;
-  background: #fafaf7;
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;     /* 17px on phones */
+  line-height: 1.65;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
 }
 
-main {
-  max-width: 40rem;
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* Clear focus ring for keyboard users */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Centers content and keeps line lengths readable */
+.container {
+  max-width: var(--max-width);
   margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* Small uppercase/monospace label used above headings */
+.eyebrow {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+
+.eyebrow--accent {
+  color: var(--accent);
+  text-transform: none;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- 3. Animated background ----------
+   Three large blurred circles drift slowly and shift hue.
+   They sit behind everything (z-index: -1) and stay put
+   while you scroll (position: fixed). */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(110px);
+  opacity: 0.38;
+}
+
+.aurora span:nth-child(1) {
+  width: min(620px, 110vw);
+  height: min(620px, 110vw);
+  top: -160px;
+  left: -120px;
+  background: #6C7BFF;
+  animation: drift-1 28s ease-in-out infinite alternate, hue 40s linear infinite;
+}
+
+.aurora span:nth-child(2) {
+  width: min(560px, 100vw);
+  height: min(560px, 100vw);
+  top: 20vh;
+  right: -160px;
+  background: #3FC1B0;
+  animation: drift-2 34s ease-in-out infinite alternate, hue 52s linear infinite reverse;
+}
+
+.aurora span:nth-child(3) {
+  width: min(520px, 90vw);
+  height: min(520px, 90vw);
+  bottom: -200px;
+  left: 30%;
+  background: #E58FB8;
+  opacity: 0.26;
+  animation: drift-3 30s ease-in-out infinite alternate, hue 46s linear infinite;
+}
+
+@keyframes drift-1 { to { transform: translate(220px, 140px) scale(1.15); } }
+@keyframes drift-2 { to { transform: translate(-200px, 180px) scale(0.9); } }
+@keyframes drift-3 { to { transform: translate(-160px, -220px) scale(1.2); } }
+@keyframes hue     { to { filter: blur(110px) hue-rotate(360deg); } }
+
+/* Respect visitors who turned on "reduce motion" in their device settings */
+@media (prefers-reduced-motion: reduce) {
+  .aurora span {
+    animation: none;
+  }
+}
+
+/* ---------- 4. Header and navigation ---------- */
+.site-header .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.site-name {
+  font-weight: 500;
+  font-size: 1.0625rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.site-name:hover {
+  color: var(--text);
+}
+
+/* Menu button: only shown on small screens when JavaScript is running */
+.nav-toggle {
+  display: none;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  font: inherit;
+  font-size: 0.9375rem;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav a {
+  display: block;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-radius: 999px;
+}
+
+.site-nav a:hover {
+  color: var(--text);
+}
+
+/* The link for the page you're on (set with aria-current="page" in the HTML) */
+.site-nav a[aria-current="page"] {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* With JavaScript on small screens: hide the links until the button is pressed.
+   (main.js adds the "js" class to <html>.) */
+@media (max-width: 39.99rem) {
+  .js .nav-toggle {
+    display: block;
+  }
+
+  .js .site-nav {
+    display: none;
+    width: 100%;
+  }
+
+  .js .site-nav.is-open {
+    display: block;
+  }
+
+  .js .site-nav ul {
+    flex-direction: column;
+    padding: 0.5rem 0;
+  }
+}
+
+/* ---------- 5. Page sections ---------- */
+.section {
+  padding: 0 0 4.5rem;
+}
+
+.section-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.625rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Hero: the first thing visitors see */
+.hero {
+  padding: 4.5rem 0 4.5rem;
+  max-width: 48.75rem;
+}
+
+.hero h1 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(2.25rem, 7vw, 3.5rem); /* scales smoothly with screen width */
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.lead {
+  margin: 0 0 2.25rem;
+  max-width: 38.75rem;
+  font-size: 1.1875rem;
+  font-weight: 300;
+  color: var(--text-muted);
+}
+
+/* Pill-shaped buttons */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.button {
+  display: inline-block;
+  min-height: 44px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 999px;
+}
+
+.button--primary {
+  color: var(--bg);
+  background: var(--text);
+}
+
+.button--primary:hover {
+  color: var(--bg);
+  background: #FFFFFF;
+}
+
+.button--ghost {
+  color: var(--text);
+  border: 1px solid rgba(233, 237, 243, 0.28);
+}
+
+.button--ghost:hover {
+  color: var(--text);
+  border-color: rgba(233, 237, 243, 0.6);
+}
+
+/* Project card: reused on the Home and Projects pages */
+.card {
+  display: grid;
+  gap: 1.75rem;
+  padding: 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.card h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.625rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.card__meta {
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  color: var(--text-faint);
+}
+
+.card__summary {
+  margin: 0 0 1.25rem;
+  font-weight: 300;
+  color: var(--text-muted);
+}
+
+.card__link {
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.card__details {
+  display: grid;
+  gap: 1.25rem;
+  margin: 0;
+}
+
+.card__details dt {
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.card__details dd {
+  margin: 0.375rem 0 0;
+}
+
+/* Contact links */
+.section p.muted {
+  margin: 0 0 1.375rem;
+  font-weight: 300;
+  color: var(--text-muted);
+}
+
+.link-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link-pills a {
+  display: inline-block;
+  min-height: 44px;
+  padding: 0.6875rem 1.25rem;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid rgba(233, 237, 243, 0.2);
+  border-radius: 999px;
+}
+
+.link-pills a:hover {
+  border-color: rgba(233, 237, 243, 0.6);
+}
+
+/* ---------- 6. Footer ---------- */
+.site-footer .container {
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
+  font-size: 0.875rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- 7. Larger screens ----------
+   Mobile styles above are the default; these rules add
+   more space and side-by-side layouts from 640px wide. */
+@media (min-width: 40rem) {
+  :root {
+    --gutter: 1.5rem;
+  }
+
+  body {
+    font-size: 1.125rem; /* 18px */
+  }
+
+  .site-header .container {
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+
+  .hero {
+    padding: 7.5rem 0 6rem;
+  }
+
+  .section {
+    padding-bottom: 5.5rem;
+  }
+
+  .card {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.25rem;
+    padding: 2.25rem;
+  }
 }

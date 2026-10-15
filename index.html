@@ -1,21 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Character encoding: lets the page display any text correctly -->
   <meta charset="UTF-8">
-  <!-- Makes the page scale properly on phones instead of showing a zoomed-out desktop view -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Text shown in the browser tab and in search results -->
   <title>Sam McKinven</title>
-  <!-- Short summary that search engines and link previews may show -->
-  <meta name="description" content="Portfolio of Sam McKinven: healthcare strategy and AI agents for intelligence delivery.">
-  <!-- Connects this page to the shared stylesheet -->
+  <meta name="description" content="Sam McKinven: healthcare strategy, now building AI agents for intelligence delivery.">
+
+  <!-- Fonts from Google Fonts: IBM Plex Sans (text) and IBM Plex Mono (small labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="css/style.css">
+  <!-- "defer" runs the script after the page has loaded -->
+  <script src="js/main.js" defer></script>
 </head>
 <body>
-  <main>
-    <h1>Hello, I'm Sam McKinven.</h1>
-    <p>This site is under construction.</p>
+  <!-- Animated background: purely decorative, so hidden from screen readers -->
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <!-- ===== Header (copy this block to every page) ===== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="site-name" href="index.html">Sam McKinven</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <!-- aria-current="page" marks the page you're on; move it on each page -->
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <p class="eyebrow eyebrow--accent">healthcare strategy → intelligence agents</p>
+      <h1>[YOUR ONE-SENTENCE POSITIONING]</h1>
+      <p class="lead">[SHORT INTRO: 2–3 sentences on your move from healthcare strategy to building agents for intelligence delivery.]</p>
+      <div class="button-row">
+        <a class="button button--primary" href="projects.html">See my projects</a>
+        <a class="button button--ghost" href="contact.html">Get in touch</a>
+      </div>
+    </section>
+
+    <!-- ===== Featured project (same card pattern as the Projects page) ===== -->
+    <section class="section" aria-labelledby="featured-heading">
+      <h2 class="eyebrow" id="featured-heading">Featured project</h2>
+      <article class="card">
+        <div>
+          <h3>Book Tracker</h3>
+          <p class="card__meta">Built with Claude Code</p>
+          <p class="card__summary">[HOW IT WORKS IN 2–3 LINES: what a user does and what the app does behind the scenes.]</p>
+          <a class="card__link" href="[REPO URL]">View the repo →</a>
+        </div>
+        <dl class="card__details">
+          <div>
+            <dt>Problem</dt>
+            <dd>[THE PROBLEM IT SOLVES]</dd>
+          </div>
+          <div>
+            <dt>What I built</dt>
+            <dd>[WHAT YOU BUILT]</dd>
+          </div>
+        </dl>
+      </article>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section class="section" aria-labelledby="contact-heading">
+      <h2 class="section-title" id="contact-heading">Let's talk</h2>
+      <p class="muted">The best way to reach me is LinkedIn.</p>
+      <ul class="link-pills">
+        <li><a href="[YOUR LINKEDIN URL]">LinkedIn ↗</a></li>
+        <li><a href="https://github.com/Mckisa17">GitHub ↗</a></li>
+      </ul>
+    </section>
   </main>
+
+  <!-- ===== Footer (copy this block to every page) ===== -->
+  <footer class="site-footer">
+    <div class="container">© <span id="year">2026</span> Sam McKinven</div>
+  </footer>
 </body>
 </html>
