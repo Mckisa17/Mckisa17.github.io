@@ -296,6 +296,83 @@ button:focus-visible {
   list-style: none;
 }
 
+/* Body copy blocks (About page intro) */
+.prose {
+  max-width: 40rem;
+}
+
+.prose p {
+  margin: 0 0 1.25rem;
+  color: var(--text-muted);
+}
+
+/* Career timeline: a vertical line with a dot for each entry */
+.timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-left: 1px solid var(--line);
+}
+
+.timeline__item {
+  position: relative;
+  padding: 0 0 2.5rem 1.75rem;
+}
+
+.timeline__item:last-child {
+  padding-bottom: 0;
+}
+
+/* The dot, drawn with CSS rather than an image */
+.timeline__item::before {
+  content: "";
+  position: absolute;
+  top: 0.55rem;
+  left: -0.3125rem;
+  width: 0.5625rem;
+  height: 0.5625rem;
+  border-radius: 50%;
+  background: var(--text-faint);
+}
+
+/* The current role gets the accent-colored dot */
+.timeline__item--current::before {
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(242, 196, 109, 0.18);
+}
+
+.timeline__when {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+}
+
+.timeline__role {
+  margin: 0 0 0.125rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.timeline__org {
+  margin: 0 0 0.75rem;
+  font-size: 0.9375rem;
+  color: var(--text-faint);
+}
+
+.timeline__impact {
+  margin: 0;
+  padding-left: 1.125rem;
+  font-weight: 300;
+  color: var(--text-muted);
+}
+
+.timeline__impact li + li {
+  margin-top: 0.375rem;
+}
+
 /* Pill-shaped buttons */
 .button-row {
   display: flex;
