@@ -373,6 +373,48 @@ button:focus-visible {
   margin-top: 0.375rem;
 }
 
+/* Contact page: large clickable link tiles */
+.contact-links {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-links a {
+  display: block;
+  padding: 1.5rem 1.75rem;
+  color: var(--text);
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.contact-links a:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(233, 237, 243, 0.3);
+}
+
+.contact-links__label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.contact-links__value {
+  font-size: 1.25rem;
+  font-weight: 500;
+  overflow-wrap: anywhere; /* long URLs wrap instead of overflowing on phones */
+}
+
 /* Pill-shaped buttons */
 .button-row {
   display: flex;
@@ -527,6 +569,10 @@ button:focus-visible {
 
   .section {
     padding-bottom: 5.5rem;
+  }
+
+  .contact-links {
+    grid-template-columns: 1fr 1fr;
   }
 
   .card {
