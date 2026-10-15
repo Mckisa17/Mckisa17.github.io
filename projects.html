@@ -36,7 +36,7 @@
     <section class="page-header">
       <p class="eyebrow eyebrow--accent">projects</p>
       <h1>Things I've built</h1>
-      <p class="lead">[ONE LINE ABOUT YOUR PROJECTS, e.g. what kinds of problems you like to work on.]</p>
+      <p class="lead">Personal and academic projects in machine learning, optimization and data engineering, newest first.</p>
     </section>
 
     <section class="section" aria-label="Project list">
@@ -50,18 +50,156 @@
           <article class="card">
             <div>
               <h2 class="card__title">Book Tracker</h2>
-              <p class="card__meta">Built with Claude Code</p>
-              <p class="card__summary">[HOW IT WORKS IN 2–3 LINES: what a user does and what the app does behind the scenes.]</p>
-              <a class="card__link" href="[REPO URL]">View the repo →</a>
+              <p class="card__meta">2026 · Built with Claude Code · React, Flask</p>
+              <p class="card__summary">Scan a book's barcode with your phone camera and the app looks up its title and cover from Open Library. From there you can shelve it as read or to-read, log daily reading sessions and keep a reading streak.</p>
+              <p class="card__private">Private repository</p>
             </div>
             <dl class="card__details">
               <div>
                 <dt>Problem</dt>
-                <dd>[THE PROBLEM IT SOLVES]</dd>
+                <dd>Keeping a personal library and a daily reading habit up to date by hand is slow and easy to let slip.</dd>
               </div>
               <div>
                 <dt>What I built</dt>
-                <dd>[WHAT YOU BUILT]</dd>
+                <dd>An installable, mobile-first web app (React, Vite, Tailwind) backed by a Flask API running as Vercel serverless functions.</dd>
+              </div>
+            </dl>
+          </article>
+        </li>
+        <!-- ===== END CARD ===== -->
+
+        <!-- ===== START CARD ===== -->
+        <li>
+          <article class="card">
+            <div>
+              <h2 class="card__title">Wedding seating optimizer</h2>
+              <p class="card__meta">2025 · Python, NumPy, NetworkX</p>
+              <p class="card__summary">Guests become nodes in a weighted relationship graph. Simulated annealing shuffles them between tables, scores each move with a compatibility cost function and gradually “cools” until the seating settles.</p>
+              <a class="card__link" href="https://github.com/Mckisa17/WeddingSeating">View the repo →</a>
+            </div>
+            <dl class="card__details">
+              <div>
+                <dt>Problem</dt>
+                <dd>Seating guests across capacity-limited tables so everyone sits with people they know or share a connection with.</dd>
+              </div>
+              <div>
+                <dt>What I built</dt>
+                <dd>Extended an existing simulated-annealing notebook by <a href="https://github.com/linanqiu/wedding-optimization-simulated-annealing">linanqiu</a>, adding a cost term for whether guests know the bride or the groom, and visualized how the optimization improves.</dd>
+              </div>
+            </dl>
+          </article>
+        </li>
+        <!-- ===== END CARD ===== -->
+
+        <!-- ===== START CARD ===== -->
+        <li>
+          <article class="card">
+            <div>
+              <h2 class="card__title">Patient length-of-stay neural network</h2>
+              <p class="card__meta">2024 · Python, TensorFlow/Keras</p>
+              <p class="card__summary">A multi-layer neural network trained on patient data to predict length-of-stay outcomes, evaluated with a correlation matrix and accuracy plots.</p>
+              <a class="card__link" href="https://github.com/Mckisa17/NN_PatientLOS">View the repo →</a>
+            </div>
+            <dl class="card__details">
+              <div>
+                <dt>Problem</dt>
+                <dd>Predicting how long patients will stay in hospital, a deep learning use case in healthcare analytics.</dd>
+              </div>
+              <div>
+                <dt>What I built</dt>
+                <dd>The model and its evaluation, including where further feature engineering and tuning could improve results.</dd>
+              </div>
+            </dl>
+          </article>
+        </li>
+        <!-- ===== END CARD ===== -->
+
+        <!-- ===== START CARD ===== -->
+        <li>
+          <article class="card">
+            <div>
+              <h2 class="card__title">Weather data warehouse for agriculture</h2>
+              <p class="card__meta">2024 · Python, Pandas, GeoPandas, Folium</p>
+              <p class="card__summary">An ETL pipeline pulls daily precipitation and temperature from NOAA's API, reshapes it into tables, runs data-quality checks and loads it into a warehouse schema that feeds crosstab reports and station maps.</p>
+              <a class="card__link" href="https://github.com/Mckisa17/Agricultural_Decision_Support">View the repo →</a>
+            </div>
+            <dl class="card__details">
+              <div>
+                <dt>Problem</dt>
+                <dd>Farmers need location-specific historical weather for planning, but raw NOAA data isn't report-ready.</dd>
+              </div>
+              <div>
+                <dt>What I built</dt>
+                <dd>The extraction pipeline, data-quality checks, warehouse schema and sample reports, charts and an interactive map of weather stations.</dd>
+              </div>
+            </dl>
+          </article>
+        </li>
+        <!-- ===== END CARD ===== -->
+
+        <!-- ===== START CARD ===== -->
+        <li>
+          <article class="card">
+            <div>
+              <h2 class="card__title">Ice melt sales analysis</h2>
+              <p class="card__meta">2023 · Python, Pandas</p>
+              <p class="card__summary">Explores profit against order size, payment type and price across products. It found that orders over 20 units lost profitability because of volume discounts, mostly from existing account customers.</p>
+              <a class="card__link" href="https://github.com/Mckisa17/Sales_Analysis_IceMelt">View the repo →</a>
+            </div>
+            <dl class="card__details">
+              <div>
+                <dt>Problem</dt>
+                <dd>Understanding what drives profit across products and order sizes, and where pricing works against the business.</dd>
+              </div>
+              <div>
+                <dt>What I built</dt>
+                <dd>The analysis notebook, visualizations and a recommendation: tiered volume discounts with a cap.</dd>
+              </div>
+            </dl>
+          </article>
+        </li>
+        <!-- ===== END CARD ===== -->
+
+        <!-- ===== START CARD ===== -->
+        <li>
+          <article class="card">
+            <div>
+              <h2 class="card__title">JIT report to NIH Other Support</h2>
+              <p class="card__meta">2023 · Python</p>
+              <p class="card__summary">Upload a Just-in-Time report spreadsheet, run one script and download a Word document drafted in the NIH Other Support layout. It runs in the browser through Binder, with no local setup.</p>
+              <a class="card__link" href="https://github.com/Mckisa17/JIT-to-othersupport">View the repo →</a>
+            </div>
+            <dl class="card__details">
+              <div>
+                <dt>Problem</dt>
+                <dd>Rebuilding grant JIT reports as NIH Other Support documents by hand is slow and repetitive.</dd>
+              </div>
+              <div>
+                <dt>What I built</dt>
+                <dd>A Python script that converts the spreadsheet into a draft Word document, ready for final review against NIH guidelines.</dd>
+              </div>
+            </dl>
+          </article>
+        </li>
+        <!-- ===== END CARD ===== -->
+
+        <!-- ===== START CARD ===== -->
+        <li>
+          <article class="card">
+            <div>
+              <h2 class="card__title">Titanic survival model</h2>
+              <p class="card__meta">2023 · Python, scikit-learn, statsmodels</p>
+              <p class="card__summary">Cleans the Kaggle Titanic data (age imputation, categorical encoding, a new deck feature) and fits linear regression models to measure which passenger traits relate to survival.</p>
+              <a class="card__link" href="https://github.com/Mckisa17/Titanic_Linear">View the repo →</a>
+            </div>
+            <dl class="card__details">
+              <div>
+                <dt>Problem</dt>
+                <dd>Quantifying how passenger characteristics relate to survival.</dd>
+              </div>
+              <div>
+                <dt>What I built</dt>
+                <dd>Models showing sex, age and deck as meaningful predictors, with an R² of 0.357 (35.7% of outcome variation explained).</dd>
               </div>
             </dl>
           </article>
