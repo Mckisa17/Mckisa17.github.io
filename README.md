@@ -25,13 +25,12 @@ Then open http://localhost:8000. Save a file and refresh to see changes.
 
 ## Editing content
 
-- Search all files for `[` to find every remaining placeholder.
-- Placeholders to fill: positioning sentence and intro (`index.html`),
-  project details and `[REPO URL]` (`index.html` and `projects.html`),
-  story and timeline (`about.html`), `[YOUR LINKEDIN URL]`
-  (`index.html` and `contact.html`).
+- All text is plain HTML in the page files. Edit, save, refresh.
 - The Book Tracker card appears on both Home and Projects. Update both.
+- A project with a private repo shows `<p class="card__private">Private repository</p>`
+  instead of a "View the repo" link. Swap them if you make the repo public.
 - To change colors, edit the variables in section 1 of `css/style.css`.
+- Keep personal contact details (email, phone) off the site: it is public.
 
 ## Adding a project card
 
