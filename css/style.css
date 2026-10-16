@@ -3,31 +3,32 @@
    One file styles every page. Sections:
    1. Design tokens (colors, fonts, spacing)
    2. Base elements
-   3. Animated background
-   4. Header and navigation
-   5. Page sections (hero, cards, contact)
-   6. Footer
-   7. Larger screens
+   3. Header and navigation
+   4. Buttons
+   5. Home: hero, color panel, project tiles
+   6. Inner pages: page header, project cards
+   7. About: story, timeline, toolkit
+   8. Contact tiles
+   9. Footer
+   10. Larger screens
    ========================================================= */
 
 /* ---------- 1. Design tokens ----------
    Change a value here and it updates everywhere it is used. */
 :root {
-  --bg: #0B0F17;            /* page background */
-  --text: #E9EDF3;          /* main text */
-  --text-muted: #B4BDCB;    /* secondary text */
-  --text-faint: #8F9AAB;    /* labels, footer */
-  --accent: #F2C46D;        /* links and highlights */
-  --accent-hover: #FFE0A3;
-  --surface: rgba(255, 255, 255, 0.045); /* see-through card fill */
-  --line: rgba(255, 255, 255, 0.09);     /* subtle borders */
+  --bg: #0A0A0A;            /* page background */
+  --surface: #141414;       /* cards and panels */
+  --surface-2: #1F1F1F;     /* secondary buttons, hover states */
+  --line: #262626;          /* borders */
+  --text: #F5F5F5;          /* main text */
+  --text-muted: #A3A3A3;    /* secondary text */
+  --text-faint: #8A8A8A;    /* labels, footer */
 
-  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --font: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  --max-width: 62.5rem;     /* 1000px: widest the content gets */
+  --max-width: 75rem;       /* 1200px: widest the content gets */
   --gutter: 1rem;           /* side padding on phones (16px) */
-  --radius: 1.25rem;        /* card corners */
+  --radius: 1.5rem;         /* cards and panels */
 }
 
 /* ---------- 2. Base elements ---------- */
@@ -45,130 +46,62 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font);
   font-size: 1.0625rem;     /* 17px on phones */
-  line-height: 1.65;
+  line-height: 1.6;
   color: var(--text);
   -webkit-font-smoothing: antialiased;
 }
 
 a {
-  color: var(--accent);
+  color: var(--text);
+  text-underline-offset: 0.2em;
 }
 
 a:hover {
-  color: var(--accent-hover);
+  color: #FFFFFF;
 }
 
 /* Clear focus ring for keyboard users */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--text);
   outline-offset: 3px;
 }
 
-/* Centers content and keeps line lengths readable */
+/* Centers content and keeps it from getting too wide */
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--gutter);
 }
 
-/* Small uppercase/monospace label used above headings */
+/* Small uppercase label used above headings */
 .eyebrow {
-  margin: 0 0 1.25rem;
-  font-family: var(--font-mono);
+  margin: 0 0 1rem;
   font-size: 0.8125rem;
-  letter-spacing: 0.06em;
-  color: var(--text-faint);
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: var(--text-faint);
 }
 
-.eyebrow--accent {
-  color: var(--accent);
-  text-transform: none;
-  letter-spacing: 0.04em;
-}
-
-/* ---------- 3. Animated background ----------
-   Three large blurred circles drift slowly and shift hue.
-   They sit behind everything (z-index: -1) and stay put
-   while you scroll (position: fixed). */
-.aurora {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.aurora span {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(110px);
-  opacity: 0.38;
-}
-
-.aurora span:nth-child(1) {
-  width: min(620px, 110vw);
-  height: min(620px, 110vw);
-  top: -160px;
-  left: -120px;
-  background: #6C7BFF;
-  animation: drift-1 28s ease-in-out infinite alternate, hue 40s linear infinite;
-}
-
-.aurora span:nth-child(2) {
-  width: min(560px, 100vw);
-  height: min(560px, 100vw);
-  top: 20vh;
-  right: -160px;
-  background: #3FC1B0;
-  animation: drift-2 34s ease-in-out infinite alternate, hue 52s linear infinite reverse;
-}
-
-.aurora span:nth-child(3) {
-  width: min(520px, 90vw);
-  height: min(520px, 90vw);
-  bottom: -200px;
-  left: 30%;
-  background: #E58FB8;
-  opacity: 0.26;
-  animation: drift-3 30s ease-in-out infinite alternate, hue 46s linear infinite;
-}
-
-@keyframes drift-1 { to { transform: translate(220px, 140px) scale(1.15); } }
-@keyframes drift-2 { to { transform: translate(-200px, 180px) scale(0.9); } }
-@keyframes drift-3 { to { transform: translate(-160px, -220px) scale(1.2); } }
-@keyframes hue     { to { filter: blur(110px) hue-rotate(360deg); } }
-
-/* Respect visitors who turned on "reduce motion" in their device settings */
-@media (prefers-reduced-motion: reduce) {
-  .aurora span {
-    animation: none;
-  }
-}
-
-/* ---------- 4. Header and navigation ---------- */
+/* ---------- 3. Header and navigation ---------- */
 .site-header .container {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .site-name {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1.0625rem;
-  color: var(--text);
+  letter-spacing: -0.01em;
   text-decoration: none;
-}
-
-.site-name:hover {
-  color: var(--text);
 }
 
 /* Menu button: only shown on small screens when JavaScript is running */
@@ -179,8 +112,8 @@ button:focus-visible {
   font: inherit;
   font-size: 0.9375rem;
   color: var(--text);
-  background: transparent;
-  border: 1px solid var(--line);
+  background: var(--surface-2);
+  border: 0;
   border-radius: 999px;
   cursor: pointer;
 }
@@ -188,6 +121,7 @@ button:focus-visible {
 .site-nav ul {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.25rem;
   margin: 0;
   padding: 0;
@@ -203,14 +137,23 @@ button:focus-visible {
   border-radius: 999px;
 }
 
-.site-nav a:hover {
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
   color: var(--text);
 }
 
-/* The link for the page you're on (set with aria-current="page" in the HTML) */
-.site-nav a[aria-current="page"] {
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.08);
+/* "Get in touch": the white pill at the end of the nav */
+.site-nav .nav-cta {
+  margin-left: 0.5rem;
+  padding: 0.625rem 1.125rem;
+  color: var(--bg);
+  background: var(--text);
+}
+
+.site-nav .nav-cta:hover,
+.site-nav .nav-cta[aria-current="page"] {
+  color: var(--bg);
+  background: #FFFFFF;
 }
 
 /* With JavaScript on small screens: hide the links until the button is pressed.
@@ -231,78 +174,339 @@ button:focus-visible {
 
   .js .site-nav ul {
     flex-direction: column;
+    align-items: stretch;
     padding: 0.5rem 0;
+  }
+
+  .js .site-nav .nav-cta {
+    margin: 0.5rem 0 0;
+    text-align: center;
   }
 }
 
-/* ---------- 5. Page sections ---------- */
-.section {
-  padding: 0 0 4.5rem;
+/* ---------- 4. Buttons ---------- */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
 }
 
-.section-title {
-  margin: 0 0 0.75rem;
-  font-size: 1.625rem;
+.button {
+  display: inline-block;
+  min-height: 44px;
+  padding: 0.75rem 1.375rem;
+  font-size: 1rem;
   font-weight: 500;
-  letter-spacing: -0.01em;
+  text-decoration: none;
+  border-radius: 999px;
 }
 
-/* Hero: the first thing visitors see */
+.button--primary {
+  color: var(--bg);
+  background: var(--text);
+}
+
+.button--primary:hover {
+  color: var(--bg);
+  background: #FFFFFF;
+}
+
+.button--secondary {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.button--secondary:hover {
+  background: #2A2A2A;
+}
+
+/* ---------- 5. Home: hero, color panel, project tiles ---------- */
 .hero {
-  padding: 4.5rem 0 4.5rem;
-  max-width: 48.75rem;
+  padding: 4.5rem 0 3rem;
+  text-align: center;
 }
 
 .hero h1 {
-  margin: 0 0 1.5rem;
-  font-size: clamp(2.25rem, 7vw, 3.5rem); /* scales smoothly with screen width */
-  line-height: 1.1;
-  font-weight: 500;
-  letter-spacing: -0.02em;
+  margin: 0 auto 1.5rem;
+  max-width: 56rem;
+  font-size: clamp(2.75rem, 10vw, 5.25rem); /* scales smoothly with screen width */
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.045em;
 }
 
 .lead {
-  margin: 0 0 2.25rem;
-  max-width: 38.75rem;
+  margin: 0 auto 2.25rem;
+  max-width: 37.5rem;
   font-size: 1.1875rem;
-  font-weight: 300;
   color: var(--text-muted);
 }
 
-/* Page header: the shorter "hero" used on inner pages */
-.page-header {
-  padding: 3.5rem 0 3rem;
-  max-width: 45rem;
+.hero .button-row {
+  justify-content: center;
 }
 
-.page-header h1 {
-  margin: 0 0 1rem;
-  font-size: clamp(2rem, 6vw, 2.75rem);
-  line-height: 1.15;
+/* The moving color panel.
+   Three blurred circles drift (transform) and change color (background).
+   Both are cheap for browsers to animate, so they stay smooth on phones. */
+.color-panel {
+  position: relative;
+  overflow: hidden;
+  height: clamp(15rem, 40vw, 27.5rem);
+  border-radius: 1.75rem;
+  background: var(--surface);
+}
+
+.color-panel span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.85;
+}
+
+.color-panel span:nth-child(1) {
+  width: 60%;
+  height: 120%;
+  left: -10%;
+  top: -30%;
+  animation: drift-1 14s ease-in-out infinite alternate, colors-1 18s ease-in-out infinite alternate;
+}
+
+.color-panel span:nth-child(2) {
+  width: 55%;
+  height: 110%;
+  right: -10%;
+  top: -20%;
+  animation: drift-2 17s ease-in-out infinite alternate, colors-2 22s ease-in-out infinite alternate;
+}
+
+.color-panel span:nth-child(3) {
+  width: 50%;
+  height: 100%;
+  left: 25%;
+  bottom: -40%;
+  animation: drift-3 12s ease-in-out infinite alternate, colors-3 20s ease-in-out infinite alternate;
+}
+
+@keyframes drift-1 { to { transform: translate(35%, 20%) scale(1.2); } }
+@keyframes drift-2 { to { transform: translate(-40%, 25%) scale(0.85); } }
+@keyframes drift-3 { to { transform: translate(-30%, -35%) scale(1.25); } }
+
+@keyframes colors-1 { 0% { background: #4F46E5; } 50% { background: #DB2777; } 100% { background: #2563EB; } }
+@keyframes colors-2 { 0% { background: #0D9488; } 50% { background: #7C3AED; } 100% { background: #D97706; } }
+@keyframes colors-3 { 0% { background: #E11D48; } 50% { background: #059669; } 100% { background: #6D28D9; } }
+
+/* Respect visitors who turned on "reduce motion" in their device settings:
+   the colors still show, they just don't move. */
+@media (prefers-reduced-motion: reduce) {
+  .color-panel span {
+    animation: none;
+  }
+
+  .color-panel span:nth-child(1) { background: #4F46E5; }
+  .color-panel span:nth-child(2) { background: #0D9488; }
+  .color-panel span:nth-child(3) { background: #DB2777; }
+}
+
+.section {
+  padding: 4.5rem 0 0;
+}
+
+.section-title {
+  margin: 0;
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
   font-weight: 500;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
-.page-header .lead {
-  margin-bottom: 0;
+/* Heading on the left, "View all" link on the right */
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
 }
 
-/* Stack of project cards on the Projects page */
-.card-list {
+.section-head a {
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* Project tiles: gradient image, tag, title, one line */
+.tiles {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
   gap: 1.5rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* Body copy blocks (About page intro) */
+.tile {
+  display: block;
+  text-decoration: none;
+}
+
+.tile__art {
+  display: flex;
+  align-items: flex-end;
+  aspect-ratio: 4 / 3;
+  padding: 1.25rem;
+  border-radius: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.tile:hover .tile__art {
+  transform: scale(0.98);
+}
+
+/* One gradient per tile; add more if you add tiles */
+.tile__art--1 { background: linear-gradient(135deg, #3730A3, #9D174D); }
+.tile__art--2 { background: linear-gradient(135deg, #065F46, #1E40AF); }
+.tile__art--3 { background: linear-gradient(135deg, #92400E, #9F1239); }
+
+.tile__tag {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 999px;
+}
+
+.tile__title {
+  margin: 1rem 0 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.tile__text {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+/* Centered "Let's talk" block at the bottom of Home */
+.cta {
+  padding: 5.5rem 0 1rem;
+  text-align: center;
+}
+
+.cta .section-title {
+  margin-bottom: 0.75rem;
+}
+
+.cta p {
+  margin: 0 auto 1.75rem;
+  max-width: 35rem;
+  color: var(--text-muted);
+}
+
+.cta .button-row {
+  justify-content: center;
+}
+
+/* ---------- 6. Inner pages: page header, project cards ---------- */
+.page-header {
+  padding: 3.5rem 0 1rem;
+  max-width: 50rem;
+}
+
+.page-header h1 {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.page-header .lead {
+  margin: 0;
+}
+
+/* Stack of project cards on the Projects page */
+.card-list {
+  display: grid;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: grid;
+  gap: 1.75rem;
+  padding: 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+/* A class rather than "h2" so the card works with any heading level */
+.card__title {
+  margin: 0 0 0.25rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.card__meta {
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  color: var(--text-faint);
+}
+
+.card__summary {
+  margin: 0 0 1.25rem;
+  color: var(--text-muted);
+}
+
+.card__link {
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* Shown instead of a repo link when the code isn't public */
+.card__private {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text-faint);
+}
+
+.card__details {
+  display: grid;
+  gap: 1.25rem;
+  margin: 0;
+}
+
+.card__details dt {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.card__details dd {
+  margin: 0.375rem 0 0;
+}
+
+/* ---------- 7. About: story, timeline, toolkit ---------- */
 .prose {
   max-width: 40rem;
 }
 
 .prose p {
   margin: 0 0 1.25rem;
+  color: var(--text-muted);
+}
+
+.section p.muted {
+  margin: 0.5rem 0 2rem;
   color: var(--text-muted);
 }
 
@@ -327,26 +531,24 @@ button:focus-visible {
 .timeline__item::before {
   content: "";
   position: absolute;
-  top: 0.55rem;
+  top: 0.5rem;
   left: -0.3125rem;
   width: 0.5625rem;
   height: 0.5625rem;
   border-radius: 50%;
-  background: var(--text-faint);
+  background: #525252;
 }
 
-/* The current role gets the accent-colored dot */
+/* The current role gets a bright dot with a soft glow */
 .timeline__item--current::before {
-  background: var(--accent);
-  box-shadow: 0 0 0 4px rgba(242, 196, 109, 0.18);
+  background: var(--text);
+  box-shadow: 0 0 0 4px rgba(245, 245, 245, 0.15);
 }
 
 .timeline__when {
   display: block;
   margin-bottom: 0.25rem;
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  letter-spacing: 0.04em;
+  font-size: 0.875rem;
   color: var(--text-faint);
 }
 
@@ -354,6 +556,7 @@ button:focus-visible {
   margin: 0 0 0.125rem;
   font-size: 1.25rem;
   font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .timeline__org {
@@ -365,7 +568,6 @@ button:focus-visible {
 .timeline__impact {
   margin: 0;
   padding-left: 1.125rem;
-  font-weight: 300;
   color: var(--text-muted);
 }
 
@@ -373,11 +575,12 @@ button:focus-visible {
   margin-top: 0.375rem;
 }
 
-/* About page toolkit: three short lists, side by side on wider screens */
+/* Toolkit: three short lists, side by side on wider screens */
 .toolkit {
   display: grid;
   gap: 1.75rem;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  margin-top: 1.75rem;
 }
 
 .toolkit .eyebrow {
@@ -388,7 +591,6 @@ button:focus-visible {
   margin: 0;
   padding: 0;
   list-style: none;
-  font-weight: 300;
   color: var(--text-muted);
 }
 
@@ -396,7 +598,7 @@ button:focus-visible {
   margin-top: 0.375rem;
 }
 
-/* Contact page: large clickable link tiles */
+/* ---------- 8. Contact tiles ---------- */
 .contact-links {
   display: grid;
   gap: 1rem;
@@ -408,26 +610,24 @@ button:focus-visible {
 .contact-links a {
   display: block;
   padding: 1.5rem 1.75rem;
-  color: var(--text);
   text-decoration: none;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .contact-links a:hover {
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(233, 237, 243, 0.3);
+  background: var(--surface-2);
+  border-color: #3A3A3A;
 }
 
 .contact-links__label {
   display: block;
   margin-bottom: 0.25rem;
-  font-family: var(--font-mono);
   font-size: 0.8125rem;
-  letter-spacing: 0.06em;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-faint);
 }
@@ -438,143 +638,20 @@ button:focus-visible {
   overflow-wrap: anywhere; /* long URLs wrap instead of overflowing on phones */
 }
 
-/* Pill-shaped buttons */
-.button-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+/* ---------- 9. Footer ---------- */
+.site-footer {
+  margin-top: 5.5rem;
+  border-top: 1px solid var(--line);
 }
 
-.button {
-  display: inline-block;
-  min-height: 44px;
-  padding: 0.75rem 1.5rem;
-  font-weight: 500;
-  text-decoration: none;
-  border-radius: 999px;
-}
-
-.button--primary {
-  color: var(--bg);
-  background: var(--text);
-}
-
-.button--primary:hover {
-  color: var(--bg);
-  background: #FFFFFF;
-}
-
-.button--ghost {
-  color: var(--text);
-  border: 1px solid rgba(233, 237, 243, 0.28);
-}
-
-.button--ghost:hover {
-  color: var(--text);
-  border-color: rgba(233, 237, 243, 0.6);
-}
-
-/* Project card: reused on the Home and Projects pages */
-.card {
-  display: grid;
-  gap: 1.75rem;
-  padding: 1.75rem;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-}
-
-/* A class rather than "h3" so the card works with any heading level */
-.card__title {
-  margin: 0 0 0.25rem;
-  font-size: 1.625rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-}
-
-.card__meta {
-  margin: 0 0 1rem;
-  font-size: 0.9375rem;
-  color: var(--text-faint);
-}
-
-.card__summary {
-  margin: 0 0 1.25rem;
-  font-weight: 300;
-  color: var(--text-muted);
-}
-
-.card__link {
-  font-weight: 500;
-  text-decoration: none;
-}
-
-/* Shown instead of a repo link when the code isn't public */
-.card__private {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  letter-spacing: 0.04em;
-  color: var(--text-faint);
-}
-
-.card__details {
-  display: grid;
-  gap: 1.25rem;
-  margin: 0;
-}
-
-.card__details dt {
-  font-size: 0.8125rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-}
-
-.card__details dd {
-  margin: 0.375rem 0 0;
-}
-
-/* Contact links */
-.section p.muted {
-  margin: 0 0 1.375rem;
-  font-weight: 300;
-  color: var(--text-muted);
-}
-
-.link-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.link-pills a {
-  display: inline-block;
-  min-height: 44px;
-  padding: 0.6875rem 1.25rem;
-  color: var(--text);
-  text-decoration: none;
-  border: 1px solid rgba(233, 237, 243, 0.2);
-  border-radius: 999px;
-}
-
-.link-pills a:hover {
-  border-color: rgba(233, 237, 243, 0.6);
-}
-
-/* ---------- 6. Footer ---------- */
 .site-footer .container {
   padding-top: 1.75rem;
   padding-bottom: 1.75rem;
   font-size: 0.875rem;
   color: var(--text-faint);
-  border-top: 1px solid var(--line);
 }
 
-/* ---------- 7. Larger screens ----------
+/* ---------- 10. Larger screens ----------
    Mobile styles above are the default; these rules add
    more space and side-by-side layouts from 640px wide. */
 @media (min-width: 40rem) {
@@ -587,29 +664,29 @@ button:focus-visible {
   }
 
   .site-header .container {
-    padding-top: 1.75rem;
-    padding-bottom: 1.75rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
   }
 
   .hero {
-    padding: 7.5rem 0 6rem;
+    padding: 6.5rem 0 4rem;
   }
 
   .page-header {
-    padding: 5.5rem 0 4rem;
+    padding: 5.5rem 0 1.5rem;
   }
 
   .section {
-    padding-bottom: 5.5rem;
-  }
-
-  .contact-links {
-    grid-template-columns: 1fr 1fr;
+    padding-top: 6.5rem;
   }
 
   .card {
     grid-template-columns: 1fr 1fr;
     gap: 2.25rem;
     padding: 2.25rem;
+  }
+
+  .contact-links {
+    grid-template-columns: 1fr 1fr;
   }
 }

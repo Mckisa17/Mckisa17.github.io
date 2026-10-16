@@ -8,13 +8,12 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
 </head>
 <body>
-  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
 
   <!-- ===== Header (same on every page; only aria-current moves) ===== -->
   <header class="site-header">
@@ -23,10 +22,9 @@
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav class="site-nav" id="site-nav" aria-label="Main">
         <ul>
-          <li><a href="index.html">Home</a></li>
           <li><a href="projects.html">Projects</a></li>
           <li><a href="about.html" aria-current="page">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a class="nav-cta" href="contact.html">Get in touch</a></li>
         </ul>
       </nav>
     </div>
@@ -34,7 +32,7 @@
 
   <main class="container">
     <section class="page-header">
-      <p class="eyebrow eyebrow--accent">about</p>
+      <p class="eyebrow">about</p>
       <h1>From healthcare strategy to building agents</h1>
       <p class="lead">I work where healthcare strategy, machine learning and strategic intelligence meet.</p>
     </section>
@@ -145,7 +143,7 @@
     <section class="section">
       <div class="button-row">
         <a class="button button--primary" href="projects.html">See my projects</a>
-        <a class="button button--ghost" href="contact.html">Get in touch</a>
+        <a class="button button--secondary" href="contact.html">Get in touch</a>
       </div>
     </section>
   </main>

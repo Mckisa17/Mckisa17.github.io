@@ -8,13 +8,12 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
 </head>
 <body>
-  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
 
   <!-- ===== Header (same on every page; only aria-current moves) ===== -->
   <header class="site-header">
@@ -23,10 +22,9 @@
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav class="site-nav" id="site-nav" aria-label="Main">
         <ul>
-          <li><a href="index.html">Home</a></li>
           <li><a href="projects.html">Projects</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="contact.html" aria-current="page">Contact</a></li>
+          <li><a class="nav-cta" href="contact.html" aria-current="page">Get in touch</a></li>
         </ul>
       </nav>
     </div>
@@ -34,7 +32,7 @@
 
   <main class="container">
     <section class="page-header">
-      <p class="eyebrow eyebrow--accent">contact</p>
+      <p class="eyebrow">contact</p>
       <h1>Let's talk</h1>
       <p class="lead">Curious about AI, or how to put it to work in your own life? I'm always happy to compare notes.</p>
     </section>

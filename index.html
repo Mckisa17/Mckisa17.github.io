@@ -4,33 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sam McKinven</title>
-  <meta name="description" content="Sam McKinven: healthcare strategy, now building AI agents for intelligence delivery.">
+  <meta name="description" content="Sam McKinven: learning AI by putting it to work, from healthcare strategy to everyday projects.">
 
-  <!-- Fonts from Google Fonts: IBM Plex Sans (text) and IBM Plex Mono (small labels) -->
+  <!-- Font from Google Fonts: Geist, a clean sans serif -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
   <!-- "defer" runs the script after the page has loaded -->
   <script src="js/main.js" defer></script>
 </head>
 <body>
-  <!-- Animated background: purely decorative, so hidden from screen readers -->
-  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
-
-  <!-- ===== Header (copy this block to every page) ===== -->
+  <!-- ===== Header (same on every page; only aria-current moves) ===== -->
   <header class="site-header">
     <div class="container">
-      <a class="site-name" href="index.html">Sam McKinven</a>
+      <a class="site-name" href="index.html" aria-current="page">Sam McKinven</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav class="site-nav" id="site-nav" aria-label="Main">
         <ul>
-          <!-- aria-current="page" marks the page you're on; move it on each page -->
-          <li><a href="index.html" aria-current="page">Home</a></li>
           <li><a href="projects.html">Projects</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a class="nav-cta" href="contact.html">Get in touch</a></li>
         </ul>
       </nav>
     </div>
@@ -39,50 +34,60 @@
   <main class="container">
     <!-- ===== Hero ===== -->
     <section class="hero">
-      <p class="eyebrow eyebrow--accent">healthcare strategy → intelligence agents</p>
-      <h1>I love learning about AI and finding ways to make it work in my everyday life.</h1>
-      <p class="lead">I'm an Associate Strategist at Mayo Clinic, working where healthcare strategy meets applied AI. I design multi-agent workflows, prompt chains and data pipelines, with human review built in, that give leaders insight they can act on.</p>
+      <h1>Learning AI by<br>putting it to work.</h1>
+      <p class="lead">I'm an Associate Strategist at Mayo Clinic, working where healthcare strategy meets applied AI.</p>
       <div class="button-row">
         <a class="button button--primary" href="projects.html">See my projects</a>
-        <a class="button button--ghost" href="contact.html">Get in touch</a>
+        <a class="button button--secondary" href="about.html">About me</a>
       </div>
     </section>
 
-    <!-- ===== Featured project (same card pattern as the Projects page) ===== -->
-    <section class="section" aria-labelledby="featured-heading">
-      <h2 class="eyebrow" id="featured-heading">Featured project</h2>
-      <article class="card">
-        <div>
-          <h3 class="card__title">Book Tracker</h3>
-          <p class="card__meta">2026 · Built with Claude Code · React, Flask</p>
-          <p class="card__summary">Scan a book's barcode with your phone camera and the app looks up its title and cover from Open Library. From there you can shelve it as read or to-read, log daily reading sessions and keep a reading streak.</p>
-          <p class="card__private">Private repository</p>
-        </div>
-        <dl class="card__details">
-          <div>
-            <dt>Problem</dt>
-            <dd>Keeping a personal library and a daily reading habit up to date by hand is slow and easy to let slip.</dd>
-          </div>
-          <div>
-            <dt>What I built</dt>
-            <dd>An installable, mobile-first web app (React, Vite, Tailwind) backed by a Flask API running as Vercel serverless functions.</dd>
-          </div>
-        </dl>
-      </article>
+    <!-- ===== Moving color panel: decoration only, so hidden from screen readers ===== -->
+    <div class="color-panel" aria-hidden="true"><span></span><span></span><span></span></div>
+
+    <!-- ===== Selected work: three tiles linking to the full cards on the Projects page ===== -->
+    <section class="section" aria-labelledby="work-heading">
+      <div class="section-head">
+        <h2 class="section-title" id="work-heading">Selected work</h2>
+        <a href="projects.html">View all projects →</a>
+      </div>
+      <ul class="tiles">
+        <li>
+          <a class="tile" href="projects.html#book-tracker">
+            <div class="tile__art tile__art--1"><span class="tile__tag">Built with Claude Code</span></div>
+            <h3 class="tile__title">Book Tracker</h3>
+            <p class="tile__text">Scan a barcode, track what you read and keep a reading streak.</p>
+          </a>
+        </li>
+        <li>
+          <a class="tile" href="projects.html#wedding-seating">
+            <div class="tile__art tile__art--2"><span class="tile__tag">Optimization</span></div>
+            <h3 class="tile__title">Wedding seating optimizer</h3>
+            <p class="tile__text">Simulated annealing seats guests with people they know.</p>
+          </a>
+        </li>
+        <li>
+          <a class="tile" href="projects.html#patient-los">
+            <div class="tile__art tile__art--3"><span class="tile__tag">Deep learning</span></div>
+            <h3 class="tile__title">Patient length-of-stay model</h3>
+            <p class="tile__text">A neural network that predicts how long patients stay.</p>
+          </a>
+        </li>
+      </ul>
     </section>
 
     <!-- ===== Contact ===== -->
-    <section class="section" aria-labelledby="contact-heading">
+    <section class="cta" aria-labelledby="contact-heading">
       <h2 class="section-title" id="contact-heading">Let's talk</h2>
-      <p class="muted">The best way to reach me is LinkedIn.</p>
-      <ul class="link-pills">
-        <li><a href="https://www.linkedin.com/in/sam-mckinven">LinkedIn ↗</a></li>
-        <li><a href="https://github.com/Mckisa17">GitHub ↗</a></li>
-      </ul>
+      <p>Curious about AI, or how to put it to work in your own life? I'm always happy to compare notes.</p>
+      <div class="button-row">
+        <a class="button button--primary" href="https://www.linkedin.com/in/sam-mckinven">LinkedIn ↗</a>
+        <a class="button button--secondary" href="https://github.com/Mckisa17">GitHub ↗</a>
+      </div>
     </section>
   </main>
 
-  <!-- ===== Footer (copy this block to every page) ===== -->
+  <!-- ===== Footer (same on every page) ===== -->
   <footer class="site-footer">
     <div class="container">© <span id="year">2026</span> Sam McKinven</div>
   </footer>

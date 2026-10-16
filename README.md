@@ -26,10 +26,12 @@ Then open http://localhost:8000. Save a file and refresh to see changes.
 ## Editing content
 
 - All text is plain HTML in the page files. Edit, save, refresh.
-- The Book Tracker card appears on both Home and Projects. Update both.
+- Home shows three short "Selected work" tiles that link to the full cards on Projects.
+  If you change a project's name or description, update both.
 - A project with a private repo shows `<p class="card__private">Private repository</p>`
   instead of a "View the repo" link. Swap them if you make the repo public.
 - To change colors, edit the variables in section 1 of `css/style.css`.
+  The moving colors on Home are the `colors-1/2/3` keyframes in section 5.
 - Keep personal contact details (email, phone) off the site: it is public.
 
 ## Adding a project card
@@ -38,8 +40,9 @@ Then open http://localhost:8000. Save a file and refresh to see changes.
    to `<!-- ===== END CARD ===== -->`.
 2. Paste it directly below the last `END CARD` line.
 3. Edit the title, "Built with" line, summary, Problem, What I built and repo link.
-4. Optional: to feature it on Home, replace the card in `index.html`
-   (keep its title as `<h3>` there).
+4. Optional: to feature it on Home, edit one of the three `<li>` tiles in
+   `index.html` and point its link at the card (add an `id` to the card's
+   `<article>`, for example `id="my-project"`, then link to `projects.html#my-project`).
 
 ## Adding a timeline entry
 

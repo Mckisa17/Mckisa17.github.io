@@ -8,13 +8,12 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
 </head>
 <body>
-  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
 
   <!-- ===== Header (same on every page; only aria-current moves) ===== -->
   <header class="site-header">
@@ -23,10 +22,9 @@
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav class="site-nav" id="site-nav" aria-label="Main">
         <ul>
-          <li><a href="index.html">Home</a></li>
           <li><a href="projects.html" aria-current="page">Projects</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a class="nav-cta" href="contact.html">Get in touch</a></li>
         </ul>
       </nav>
     </div>
@@ -34,7 +32,7 @@
 
   <main class="container">
     <section class="page-header">
-      <p class="eyebrow eyebrow--accent">projects</p>
+      <p class="eyebrow">projects</p>
       <h1>Things I've built</h1>
       <p class="lead">Personal and academic projects in machine learning, optimization and data engineering, newest first.</p>
     </section>
@@ -47,7 +45,7 @@
 
         <!-- ===== START CARD ===== -->
         <li>
-          <article class="card">
+          <article class="card" id="book-tracker">
             <div>
               <h2 class="card__title">Book Tracker</h2>
               <p class="card__meta">2026 · Built with Claude Code · React, Flask</p>
@@ -70,7 +68,7 @@
 
         <!-- ===== START CARD ===== -->
         <li>
-          <article class="card">
+          <article class="card" id="wedding-seating">
             <div>
               <h2 class="card__title">Wedding seating optimizer</h2>
               <p class="card__meta">2025 · Python, NumPy, NetworkX</p>
@@ -93,7 +91,7 @@
 
         <!-- ===== START CARD ===== -->
         <li>
-          <article class="card">
+          <article class="card" id="patient-los">
             <div>
               <h2 class="card__title">Patient length-of-stay neural network</h2>
               <p class="card__meta">2024 · Python, TensorFlow/Keras</p>
